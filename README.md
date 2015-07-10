@@ -17,7 +17,7 @@ There are two .py file in the `src` directory, `words_tweeted.py` and `median_un
 
 The program is written in Python, with `time`, `sys`, and `heapq` module imported. The `time` module is used only to estimate the run time of each program, and `heapq` module is used to calculate median for the second feature.
 
-The program has been tested with data of different sizes to show that it scales for large amounts of data. The largest data set was 571MB, with approximately 5,150,000 tweets. The test was perform on a MacBook Air (i5 1.6G/4G/128G). The following figure shows the run time for the two functions.
+The program has been tested with data of different sizes to show that it scales for large amounts of data. The largest data set was 571MB, with approximately 5,150,000 tweets. The test was perform on a MacBook Air (i5 1.6G/4G/128G). The following figure shows the run time for the two functions. (No, it's not a 3D plot so no need for your 3D glass)
 
 ![Example Repo Structure](plots/cc_time.png)
 
@@ -27,7 +27,7 @@ The second feature is essentially a `running median` problem. One suitable appro
 
 The two-heap based method here is good for general purpose of calculating running median. However, for this specific problem, there is a possibly better approach.
 
-Because the word-limit for each tweet is 140, the maximum number of unique words per tweet is 140. This means we just need to find the median for a numerical list/array including only integers 1 to 140. It can be done using the `dictionary` in python, with keys equal to the possible numbers of unique words per tweet (1 - 140).
+Because the word-limit for each tweet is 140, the maximum number of unique words per tweet is 140. This means we just need to *locate* the median for a numerical list/array including only integers 1 to 140. It can be done using the `dictionary` in python, with keys equal to the possible numbers of unique words per tweet (1 - 140), and values equals to the appearances.
 
 Another problem of the two-heap based method is that it may cause memory leak, especially when it's used for live web data analysis. One the other hand, the dictionary based method won't be the same efficient when handling situations with unlimited keys, such as float numbers.
 
